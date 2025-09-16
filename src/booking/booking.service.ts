@@ -17,4 +17,8 @@ export class BookingService {
   async rejectBooking(id: string) {
     await this.bookingRepo.update(id, { status: BookingStatus.REJECTED });
   }
+
+    async checkBooking(id: string) {
+    await this.bookingRepo.update(id, { status: BookingStatus.CHECKING_AVAILABILITY });
+  }
 }

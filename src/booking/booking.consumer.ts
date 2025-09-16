@@ -35,6 +35,10 @@ export class BookingConsumer implements OnModuleInit {
 
           this.logger.debug(`Received booking created event: ${JSON.stringify(data)}`);
 
+          await this.bookingService.checkBooking(data.bookingId);
+
+          this.logger.log(`Booking ${data.bookingId} CHECKING_AVAILABILITY`);
+
           if (data.guests <= 6) {
             await this.bookingService.confirmBooking(data.bookingId);
             this.logger.log(`Booking ${data.bookingId} confirmed`);
