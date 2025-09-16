@@ -39,6 +39,8 @@ export class BookingConsumer implements OnModuleInit {
 
           this.logger.log(`Booking ${data.bookingId} CHECKING_AVAILABILITY`);
 
+          //супер простая логика, бизнес-логику уже нужно уточнять детали при разработке
+
           if (data.guests <= 6) {
             await this.bookingService.confirmBooking(data.bookingId);
             this.logger.log(`Booking ${data.bookingId} confirmed`);
